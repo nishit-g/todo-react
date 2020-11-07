@@ -24,7 +24,8 @@ class TodoMain extends Component {
     const listOfTodos = [...this.state.listOfTodos];
     const at = listOfTodos.indexOf(todo);
     listOfTodos[at] = { ...this.state.listOfTodos[at] };
-    listOfTodos[at].completed = !listOfTodos[at].completed;
+    listOfTodos[at].completed = isComplete;
+    this.setState(listOfTodos);
   };
 
   handleAddition = (todoTitle) => {
@@ -32,9 +33,19 @@ class TodoMain extends Component {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
       title: todoTitle,
+      completed: false,
     };
-    const listOfTodos = [newTodo, ...this.state.listOfTodos];
+    const listOfTodos = [newTodo, this.state.listOfTodos];
     this.setState({ listOfTodos });
+  };
+
+  handleModification = (toModifyTodo, modifiedTodo) => {
+    const tempList = [...this.state.listOfTodos];
+    const at = tempList.indexOf(toModifyTodo);
+    console.log(tempList[at]);
+    tempList[at] = modifiedTodo;
+    console.log(tempList[at]);
+    this.setState({ listOfTodos: tempList });
   };
 
   render() {
@@ -48,6 +59,7 @@ class TodoMain extends Component {
             todo={todo}
             onCompleteToggle={this.handleCompleteToggle}
             onDelete={this.handleDelete}
+            onEdit={this.handleModification}
           />
         ))}
       </div>
