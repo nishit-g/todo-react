@@ -19,11 +19,24 @@ class TodoMain extends Component {
     this.setState({ listOfTodos });
   };
 
+  handleCompleteToggle = (todo, isComplete) => {
+    const listOfTodos = [...this.state.listOfTodos];
+    const at = listOfTodos.indexOf(todo);
+    listOfTodos[at] = { ...this.state.listOfTodos[at] };
+    listOfTodos[at].completed = !listOfTodos[at].completed;
+    this.setState({ listOfTodos });
+  };
+
   render() {
     return (
       <div>
         {this.state.listOfTodos.map((todo) => (
-          <Todo key={todo.id} todo={todo} onDelete={this.handleDelete} />
+          <Todo
+            key={todo.id}
+            todo={todo}
+            onCompleteToggle={this.handleCompleteToggle}
+            onDelete={this.handleDelete}
+          />
         ))}
       </div>
     );
