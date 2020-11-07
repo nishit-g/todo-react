@@ -20,22 +20,19 @@ class TodoMain extends Component {
     this.setState({ listOfTodos });
   };
 
-  handleCompleteToggle = (todo, isComplete) => {
-    const listOfTodos = [...this.state.listOfTodos];
-    const at = listOfTodos.indexOf(todo);
-    listOfTodos[at] = { ...this.state.listOfTodos[at] };
-    listOfTodos[at].completed = isComplete;
-    this.setState(listOfTodos);
+  handleCompleteToggle = (todo, modifiedTodo) => {
+    const at = this.state.listOfTodos.indexOf(todo);
+    this.state.listOfTodos[at] = modifiedTodo;
   };
 
   handleAddition = (todoTitle) => {
-    alert("Added TODO -> " + todoTitle);
     const newTodo = {
+      completed: false,
       id: Math.floor(Math.random() * 1000),
       title: todoTitle,
-      completed: false,
     };
-    const listOfTodos = [newTodo, this.state.listOfTodos];
+
+    const listOfTodos = [newTodo, ...this.state.listOfTodos];
     this.setState({ listOfTodos });
   };
 

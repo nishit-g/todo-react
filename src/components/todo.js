@@ -14,7 +14,14 @@ class Todo extends Component {
       title: this.state.title,
       newTitle: this.state.newTitle,
     });
-    this.props.onCompleteToggle(this.props.todo, this.state.isComplete);
+
+    const modifiedTodo = {
+      completed: !this.state.isComplete,
+      id: this.props.todo.id,
+      title: this.state.newTitle,
+    };
+
+    this.props.onCompleteToggle(this.props.todo, modifiedTodo);
   };
 
   handleEdit = () => {
@@ -30,11 +37,13 @@ class Todo extends Component {
       title: this.state.newTitle,
       newTitle: this.state.newTitle,
     });
+
     const modifiedTodo = {
+      completed: this.state.isComplete,
       id: this.props.todo.id,
       title: this.state.newTitle,
-      completed: this.state.isComplete,
     };
+
     this.props.onEdit(this.props.todo, modifiedTodo);
   };
 
