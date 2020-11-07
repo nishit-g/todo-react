@@ -1,21 +1,13 @@
 import React, { Component } from "react";
-import { getTodos } from "../services/fakeTodoService";
+import Button from "react-bootstrap/Button";
 
 class Todo extends Component {
-  state = {
-    listOfTodos: [],
-  };
-
-  componentDidMount() {
-    this.setState({ listOfTodos: getTodos() });
-  }
-
   render() {
+    const { todo } = this.props;
     return (
       <div>
-        {this.state.listOfTodos.map((todo) => (
-          <ul>{todo.title}</ul>
-        ))}
+        {todo.title}
+        <Button variant="success">Mark as Complete</Button>
       </div>
     );
   }
