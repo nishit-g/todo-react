@@ -40,12 +40,8 @@ class TodoMain extends Component {
   };
 
   handleModification = (toModifyTodo, modifiedTodo) => {
-    const tempList = [...this.state.listOfTodos];
-    const at = tempList.indexOf(toModifyTodo);
-    console.log(tempList[at]);
-    tempList[at] = modifiedTodo;
-    console.log(tempList[at]);
-    this.setState({ listOfTodos: tempList });
+    const at = this.state.listOfTodos.indexOf(toModifyTodo);
+    this.state.listOfTodos[at] = modifiedTodo;
   };
 
   render() {
