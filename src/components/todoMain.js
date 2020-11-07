@@ -23,6 +23,9 @@ class TodoMain extends Component {
   handleCompleteToggle = (todo, modifiedTodo) => {
     const at = this.state.listOfTodos.indexOf(todo);
     this.state.listOfTodos[at] = modifiedTodo;
+
+    const tempList = [...this.state.listOfTodos];
+    this.setState({ listOfTodos: tempList });
   };
 
   handleAddition = (todoTitle) => {
@@ -39,6 +42,9 @@ class TodoMain extends Component {
   handleModification = (toModifyTodo, modifiedTodo) => {
     const at = this.state.listOfTodos.indexOf(toModifyTodo);
     this.state.listOfTodos[at] = modifiedTodo;
+
+    const tempList = [...this.state.listOfTodos];
+    this.setState({ listOfTodos: tempList });
   };
 
   render() {
