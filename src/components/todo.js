@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
 
 class Todo extends Component {
   render() {
-    const { todo } = this.props;
+    const { todo, onDelete } = this.props;
     return (
       <div>
-        {todo.title}
-        <Button variant="success">Mark as Complete</Button>
+        <span style={{ fontSize: "24px" }}>{todo.title}</span>
+        <button className="btn btn-success btn-sm">Mark as Complete</button>
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={() => onDelete(todo)}
+        >
+          Delete
+        </button>
       </div>
     );
   }
