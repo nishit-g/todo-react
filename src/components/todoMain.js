@@ -19,11 +19,25 @@ class TodoMain extends Component {
     this.setState({ listOfTodos });
   };
 
+  handleModification = (toModifyTodo, newTitle) => {
+    console.log(newTitle);
+    const listOfTodos = [...this.state.listOfTodos];
+    const at = listOfTodos.indexOf(toModifyTodo);
+    listOfTodos[at] = { ...this.state.listOfTodos[at] };
+    listOfTodos[at].title = newTitle;
+    this.setState(listOfTodos);
+  };
+
   render() {
     return (
       <div>
         {this.state.listOfTodos.map((todo) => (
-          <Todo key={todo.id} todo={todo} onDelete={this.handleDelete} />
+          <Todo
+            key={todo.id}
+            todo={todo}
+            onDelete={this.handleDelete}
+            onEdit={this.handleModification}
+          />
         ))}
       </div>
     );
