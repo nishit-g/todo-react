@@ -31,7 +31,11 @@ class Todo extends Component {
   };
 
   handleDone = () => {
-    if (this.state.title === this.state.newTitle) {
+    if (
+      this.state.title === this.state.newTitle ||
+      this.state.newTitle === "" ||
+      this.state.newTitle === " "
+    ) {
       return this.handleEdit();
     }
 
@@ -66,39 +70,47 @@ class Todo extends Component {
   render() {
     const { todo, onDelete } = this.props;
     return this.state.isInEditMode ? (
-      <div>
+      <div className="row">
         <input
-          size="sm"
+          className="col-8"
+          style={{ fontSize: "20px" }}
           onChange={this.handleChange}
           value={this.state.newTitle}
         />{" "}
-        <button className="btn btn-success btn-sm" onClick={this.handleDone}>
+        <button
+          className="col btn btn-success btn-sm m-2"
+          onClick={this.handleDone}
+        >
           Done
         </button>
-        <button className="btn btn-danger btn-sm" onClick={this.handleCancel}>
+        <button
+          className="col btn btn-danger btn-sm m-2"
+          onClick={this.handleCancel}
+        >
           Cancel
         </button>
       </div>
     ) : (
-      <div>
+      <div className="row">
         <span
+          className="col-8"
           onClick={this.handleEdit}
           style={
             this.state.isComplete
-              ? { fontSize: "24px", textDecorationLine: "line-through" }
-              : { fontSize: "24px" }
+              ? { fontSize: "20px", textDecorationLine: "line-through" }
+              : { fontSize: "20px" }
           }
         >
           {this.state.title}
         </span>
         <button
-          className="btn btn-success btn-sm"
+          className="col btn btn-success btn-sm m-2"
           onClick={this.handleCompleteToggle}
         >
           {this.state.isComplete ? "Mark as Incomplete" : "Mark as Complete"}
         </button>
         <button
-          className="btn btn-danger btn-sm"
+          className="col btn btn-danger btn-sm m-2"
           onClick={() => onDelete(todo)}
         >
           Delete

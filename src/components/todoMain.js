@@ -49,9 +49,23 @@ class TodoMain extends Component {
 
   render() {
     return (
-      <div style={{}}>
-        <h1>Todo Application</h1>
+      <div>
+        <h1
+          className="p-4 d-flex justify-content-center "
+          style={{ fontSize: "64px", fontStyle: "bold" }}
+        >
+          TODO Application
+        </h1>
+
         <AddTodo addNewTodo={this.handleAddition}></AddTodo>
+
+        <div
+          class="alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+          Click on Todo to <strong>Modify it!</strong>
+        </div>
+
         {this.state.listOfTodos.map((todo) => (
           <Todo
             key={todo.id}

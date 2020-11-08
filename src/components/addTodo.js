@@ -13,7 +13,14 @@ class AddTodo extends Component {
 
     const todoTitle = this.state.todoTitle;
 
-    if (!todoTitle || /^\s*$/.test(todoTitle)) {
+    if (
+      !todoTitle ||
+      todoTitle === "" ||
+      todoTitle === "" ||
+      /^\s*$/.test(todoTitle)
+    ) {
+      // Clear the input field
+      this.setState({ todoTitle: "" });
       return;
     }
 
@@ -27,18 +34,22 @@ class AddTodo extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            placeholder="Add a Todo"
-            size="sm"
-            value={this.state.todoTitle}
-            onChange={this.handleChange}
-          />
+      <div className="row p-2 justify-content-md-center">
+        <input
+          className="col-md-auto m-2 "
+          type="text"
+          size="bg"
+          placeholder="Add a Todo"
+          value={this.state.todoTitle}
+          onChange={this.handleChange}
+        />
 
-          <button className="btn btn-primary btn-sm">Add</button>
-        </form>
+        <button
+          onClick={this.handleSubmit}
+          className="col-md-auto btn btn-primary btn m-2"
+        >
+          Add
+        </button>
       </div>
     );
   }
