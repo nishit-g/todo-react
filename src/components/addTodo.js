@@ -12,6 +12,11 @@ class AddTodo extends Component {
     event.preventDefault();
 
     const todoTitle = this.state.todoTitle;
+
+    if (!todoTitle || /^\s*$/.test(todoTitle)) {
+      return;
+    }
+
     // send the todo to todoMain to add it to the task list
     // and set the state
     this.props.addNewTodo(todoTitle);

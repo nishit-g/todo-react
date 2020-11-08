@@ -31,6 +31,10 @@ class Todo extends Component {
   };
 
   handleDone = () => {
+    if (this.state.title === this.state.newTitle) {
+      return this.handleEdit();
+    }
+
     this.setState({
       isComplete: this.state.isComplete,
       isInEditMode: !this.state.isInEditMode,

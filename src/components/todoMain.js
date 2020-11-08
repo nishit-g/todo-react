@@ -49,7 +49,7 @@ class TodoMain extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{}}>
         <h1>Todo Application</h1>
         <AddTodo addNewTodo={this.handleAddition}></AddTodo>
         {this.state.listOfTodos.map((todo) => (
