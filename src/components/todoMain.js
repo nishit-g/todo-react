@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Todo from "./todo";
-import { getTodos } from "../services/fakeTodoService";
+// import { getTodos } from "../services/fakeTodoService";
 import AddTodo from "./addTodo";
 
 class TodoMain extends Component {
@@ -8,8 +8,15 @@ class TodoMain extends Component {
     listOfTodos: [],
   };
 
-  componentDidMount() {
-    this.setState({ listOfTodos: getTodos() });
+  // Make a request to backend service and set the state
+  async componentDidMount() {
+    // Make sure you have json server running at port 8000
+    const url = "http://localhost:8000/todos";
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    this.setState({ listOfTodos: data });
   }
 
   handleDelete = (toDeleteTodo) => {
@@ -50,6 +57,7 @@ class TodoMain extends Component {
   render() {
     return (
       <div>
+        {/* Application Title */}
         <h1
           className="p-4 d-flex justify-content-center "
           style={{ fontSize: "64px", fontStyle: "bold" }}
@@ -57,15 +65,18 @@ class TodoMain extends Component {
           TODO Application
         </h1>
 
+        {/* Add Todo Component */}
         <AddTodo addNewTodo={this.handleAddition}></AddTodo>
 
+        {/* Note for user to Modify todo*/}
         <div
-          class="alert alert-warning alert-dismissible fade show"
+          className="alert alert-warning alert-dismissible fade show"
           role="alert"
         >
           Click on Todo to <strong>Modify it!</strong>
         </div>
 
+        {/* Create TODO components based on the data recieved */}
         {this.state.listOfTodos.map((todo) => (
           <Todo
             key={todo.id}
