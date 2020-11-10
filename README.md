@@ -19,7 +19,7 @@ git clone https://github.com/nishit-g/fake-server.git
 cd todo-react
 ```
 
-### Step 3 - Run npm install
+### Step 3 - Run npm install to install dependencies
 ```
 npm install
 ```
@@ -29,19 +29,24 @@ npm install
 
 ## Step B - Run the local server
 
-### Step 4 - Move to fake-server repo directory
+### Step 4 - Run npm install to install dependencies
+```
+npm install
+```
+
+### Step 5 - Move to fake-server repo directory
 (this might be different for you depending on where you cloned the repo)
 ```
 cd ../fake-server   
 ```
-### Step 5 - Run the server
+### Step 6 - Run the server
 ```
 npm run json:server
 ```
 (this will start local server at port 8000 you can check it in your browser)
 
 ## Run the project
-### Step 6 - Move back 'todo-react' repo and make sure the server is still running
+### Step 7 - Move back 'todo-react' repo and make sure the server is still running
 ```
 npm start
 ```
