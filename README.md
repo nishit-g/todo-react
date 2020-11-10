@@ -29,16 +29,17 @@ npm install
 
 ## Step B - Run the local server
 
-### Step 4 - Run npm install to install dependencies
-```
-npm install
-```
-
-### Step 5 - Move to fake-server repo directory
+### Step 4 - Move to fake-server repo directory
 (this might be different for you depending on where you cloned the repo)
 ```
 cd ../fake-server   
 ```
+
+### Step 5 - Run npm install to install dependencies
+```
+npm install
+```
+
 ### Step 6 - Run the server
 ```
 npm run json:server
